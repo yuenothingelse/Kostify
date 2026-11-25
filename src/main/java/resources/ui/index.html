@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=393, initial-scale=1.0" />
+  <title>Kostify — Boarding House Management</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <div id="iphone16Frame" class="iphone-16" data-figma-frame="iPhone-16-393x852">
+      <!-- Dynamic Island & Status Bar -->
+      <div class="status-bar">
+        <span class="status-time">09:41</span>
+        <div class="dynamic-island"></div>
+        <div class="status-icons">
+          <span>5G</span>
+          <span class="battery-pill">100%</span>
+        </div>
+      </div>
+
+      <!-- Toast Notification -->
+      <div id="toast" class="toast hidden" role="status"></div>
+
+      <!-- SCREEN 1: SPLASH -->
+      <section id="screen-splash" class="screen active splash-screen">
+        <div class="blob blob-top"></div>
+        <div class="blob blob-bottom"></div>
+
+        <div class="splash-content">
+          <div class="brand-logo-lg">
+            <svg viewBox="0 0 64 64" width="44" height="44" fill="none">
+              <path d="M32 6L8 24V52C8 55.3137 10.6863 58 14 58H50C53.3137 58 56 55.3137 56 52V24L32 6Z" fill="#1f8a4c"/>
+              <circle cx="32" cy="27" r="5" fill="#ffffff"/>
+              <path d="M22 45C22 39.4772 26.4772 35 32 35C37.5228 35 42 39.4772 42 45V48H22V45Z" fill="#ffffff"/>
+            </svg>
+          </div>
+          <h1 class="brand-title-lg">Kostify</h1>
+          <p class="brand-subtitle">Boarding House Management</p>
+
+          <div class="house-illustration">
+            <svg viewBox="0 0 260 150" width="240" height="138" fill="none">
+              <ellipse cx="130" cy="138" rx="108" ry="8" fill="#d7efe0"/>
+              <rect x="62" y="64" width="126" height="68" rx="8" fill="#ffffff" stroke="#cde7d6" stroke-width="2"/>
+              <path d="M52 68L125 24L198 68H52Z" fill="#1f8a4c"/>
+              <rect x="112" y="92" width="24" height="40" rx="4" fill="#166534"/>
+              <rect x="78" y="80" width="22" height="20" rx="3" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+              <rect x="150" y="80" width="22" height="20" rx="3" fill="#dcfce7" stroke="#86efac" stroke-width="1.5"/>
+              <circle cx="42" cy="108" r="18" fill="#4ade80" opacity="0.45"/>
+              <circle cx="216" cy="104" r="22" fill="#22c55e" opacity="0.35"/>
+              <rect x="192" y="102" width="22" height="16" rx="3" fill="#15803d"/>
+              <rect x="201" y="118" width="4" height="16" fill="#166534"/>
+            </svg>
+          </div>
+
+          <p class="splash-tagline">Kelola kos lebih mudah,<br />hidup lebih tenang.</p>
+          <button id="btnMulai" class="btn-primary btn-full" type="button">Masuk ke Aplikasi</button>
+        </div>
+      </section>
+
+      <!-- SCREEN 2: LOGIN -->
+      <section id="screen-login" class="screen login-screen">
+        <div class="login-header">
+          <div class="brand-badge-sm">
+            <span class="logo-dot">K</span>
+            <div>
+              <div class="login-brand-name">Kostify</div>
+              <div class="login-brand-sub">Panel Pengelola Kost</div>
+            </div>
+          </div>
+          <h2>Selamat Datang</h2>
+          <p>Masuk menggunakan akun pengelola untuk mengelola kamar, penghuni, dan pembayaran.</p>
+        </div>
+
+        <form id="loginForm" class="card-form">
+          <div class="form-group">
+            <label for="loginEmail">Email Pengelola</label>
+            <input id="loginEmail" type="email" value="admin@kostify.id" placeholder="admin@kostify.id" required />
+          </div>
+          <div class="form-group">
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" type="password" value="admin123" placeholder="Masukkan password" required />
+          </div>
+          <div id="loginError" class="error-box hidden"></div>
+          <button type="submit" class="btn-primary btn-full">Masuk</button>
+        </form>
+      </section>
+
+      <!-- SCREEN 3: BERANDA -->
+      <section id="screen-beranda" class="screen main-screen">
+        <header class="hero-header">
+          <div class="hero-top">
+            <div class="hero-brand">
+              <div class="hero-logo-box">
+                <svg viewBox="0 0 36 36" width="24" height="24" fill="none">
+                  <path d="M18 4L5 14V29C5 30.6569 6.34315 32 8 32H28C29.6569 32 31 30.6569 31 29V14L18 4Z" fill="#ffffff"/>
+                  <circle cx="18" cy="15" r="3" fill="#1b7a43"/>
+                  <path d="M13 25C13 22.2386 15.2386 20 18 20C20.7614 20 23 22.2386 23 25V27H13V25Z" fill="#1b7a43"/>
+                </svg>
+              </div>
+              <div>
+                <div class="hero-title">Kostify</div>
+                <div class="hero-sub">Boarding House Management</div>
+              </div>
+            </div>
+            <button id="btnLogout" class="profile-btn" type="button" title="Keluar / Logout">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#1b7a43" stroke-width="2">
+                <circle cx="12" cy="8" r="4"/>
+                <path d="M4 20c0-3.3 3.6-6 8-6s8 2.7 8 6"/>
+              </svg>
+            </button>
+          </div>
+          <div class="hero-greeting">
+            <div class="greeting-label">Halo,</div>
+            <div id="adminGreeting" class="greeting-name">Admin 1 👋</div>
+            <div class="greeting-sub">Semoga harimu menyenangkan!</div>
+          </div>
+        </header>
+
+        <div class="content-pad">
+          <!-- KPI Summary Card -->
+          <div class="kpi-card">
+            <div class="kpi-item">
+              <div class="kpi-icon green">🏠</div>
+              <div class="kpi-label">Total Kamar</div>
+              <div id="kpiTotalKamar" class="kpi-value">0</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-icon teal">👥</div>
+              <div class="kpi-label">Kamar Terisi</div>
+              <div id="kpiKamarTerisi" class="kpi-value">0</div>
+            </div>
+            <div class="kpi-item">
+              <div class="kpi-icon mint">🚪</div>
+              <div class="kpi-label">Kamar Kosong</div>
+              <div id="kpiKamarKosong" class="kpi-value">0</div>
+            </div>
+          </div>
+
+          <!-- Finance Quick Strip -->
+          <div class="finance-strip">
+            <div class="finance-box">
+              <span class="finance-caption">Pemasukan Lunas</span>
+              <strong id="kpiPendapatan" class="finance-amount success">Rp 0</strong>
+            </div>
+            <div class="finance-box">
+              <span class="finance-caption">Tagihan / Tunggakan</span>
+              <strong id="kpiTunggakan" class="finance-amount warn">Rp 0</strong>
+            </div>
+          </div>
+
+          <!-- Daftar Kamar Preview -->
+          <div class="section-card">
+            <div class="section-head">
+              <div class="section-title-group">
+                <span class="mini-badge">🚪</span>
+                <h3>Daftar Kamar</h3>
+              </div>
+              <button type="button" class="link-btn" data-nav="kamar">Lihat Semua &rsaquo;</button>
+            </div>
+            <div id="dashboardKamarList" class="room-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREEN 4: KAMAR -->
+      <section id="screen-kamar" class="screen main-screen">
+        <header class="page-header">
+          <div>
+            <h2>Data Kamar</h2>
+            <p>Kelola nomor, tipe, harga sewa, dan status kamar</p>
+          </div>
+          <button id="btnOpenTambahKamar" class="btn-primary btn-sm" type="button">+ Tambah</button>
+        </header>
+
+        <div class="content-pad">
+          <input id="searchKamar" class="search-input" type="search" placeholder="Cari nomor atau tipe kamar..." />
+          <div class="filter-pills" id="filterKamarPills">
+            <button type="button" class="pill active" data-status="Semua">Semua</button>
+            <button type="button" class="pill" data-status="Kosong">Kosong</button>
+            <button type="button" class="pill" data-status="Terisi">Terisi</button>
+          </div>
+          <div id="kamarListContainer" class="stack-list"></div>
+        </div>
+      </section>
+
+      <!-- SCREEN 5: PENGHUNI -->
+      <section id="screen-penghuni" class="screen main-screen">
+        <header class="page-header">
+          <div>
+            <h2>Data Penghuni</h2>
+            <p>Status kamar &amp; tagihan otomatis tersinkron</p>
+          </div>
+          <button id="btnOpenTambahPenghuni" class="btn-primary btn-sm" type="button">+ Tambah</button>
+        </header>
+
+        <div class="content-pad">
+          <input id="searchPenghuni" class="search-input" type="search" placeholder="Cari nama, no HP, atau kamar..." />
+          <div class="filter-pills" id="filterPenghuniPills">
+            <button type="button" class="pill active" data-status="Semua">Semua</button>
+            <button type="button" class="pill" data-status="Aktif">Aktif</button>
+            <button type="button" class="pill" data-status="Keluar">Keluar</button>
+          </div>
+          <div id="penghuniListContainer" class="stack-list"></div>
+        </div>
+      </section>
+
+      <!-- SCREEN 6: PEMBAYARAN -->
+      <section id="screen-pembayaran" class="screen main-screen">
+        <header class="page-header">
+          <div>
+            <h2>Pembayaran Sewa</h2>
+            <p>Tagihan bulanan otomatis &amp; riwayat transaksi</p>
+          </div>
+        </header>
+
+        <div class="content-pad">
+          <div class="finance-strip compact">
+            <div class="finance-box">
+              <span class="finance-caption">Total Lunas</span>
+              <strong id="payTotalLunas" class="finance-amount success">Rp 0</strong>
+            </div>
+            <div class="finance-box">
+              <span class="finance-caption">Belum / Jatuh Tempo</span>
+              <strong id="payTotalBelum" class="finance-amount warn">Rp 0</strong>
+            </div>
+          </div>
+
+          <input id="searchPembayaran" class="search-input" type="search" placeholder="Cari penghuni, kode INV, atau kamar..." />
+          <div class="filter-pills" id="filterPembayaranPills">
+            <button type="button" class="pill active" data-status="Semua">Semua</button>
+            <button type="button" class="pill" data-status="Belum Lunas">Belum Lunas</button>
+            <button type="button" class="pill" data-status="Jatuh Tempo">Jatuh Tempo</button>
+            <button type="button" class="pill" data-status="Lunas">Lunas</button>
+          </div>
+          <div id="pembayaranListContainer" class="stack-list"></div>
+        </div>
+      </section>
+
+      <!-- BOTTOM NAVIGATION BAR -->
+      <nav id="bottomNav" class="bottom-nav hidden" aria-label="Navigasi Utama">
+        <button type="button" class="nav-item active" data-nav="beranda">
+          <span class="nav-ico">🏠</span>
+          <span>Beranda</span>
+        </button>
+        <button type="button" class="nav-item" data-nav="kamar">
+          <span class="nav-ico">🛏️</span>
+          <span>Kamar</span>
+        </button>
+        <button type="button" class="nav-item" data-nav="penghuni">
+          <span class="nav-ico">👥</span>
+          <span>Penghuni</span>
+        </button>
+        <button type="button" class="nav-item" data-nav="pembayaran">
+          <span class="nav-ico">💳</span>
+          <span>Pembayaran</span>
+        </button>
+      </nav>
+
+      <!-- MODAL FORM KAMAR -->
+      <div id="modalKamar" class="modal-backdrop hidden">
+        <div class="modal-sheet">
+          <div class="modal-head">
+            <h3 id="modalKamarTitle">Tambah Kamar</h3>
+            <button type="button" class="close-btn" data-close="modalKamar">&times;</button>
+          </div>
+          <form id="formKamar">
+            <input type="hidden" id="kamarId" />
+            <div class="form-group">
+              <label for="kamarNomor">Nomor Kamar</label>
+              <input id="kamarNomor" type="text" placeholder="Contoh: A5" required />
+            </div>
+            <div class="form-group">
+              <label for="kamarTipe">Tipe Kamar</label>
+              <input id="kamarTipe" type="text" placeholder="Contoh: Standard AC" required />
+            </div>
+            <div class="form-group">
+              <label for="kamarHarga">Harga Sewa / Bulan (Rp)</label>
+              <input id="kamarHarga" type="number" min="1000" step="1000" placeholder="1500000" required />
+            </div>
+            <div id="kamarStatusGroup" class="form-group hidden">
+              <label for="kamarStatus">Status Kamar</label>
+              <select id="kamarStatus">
+                <option value="Kosong">Kosong</option>
+                <option value="Terisi">Terisi</option>
+              </select>
+            </div>
+            <div class="modal-actions">
+              <button type="button" class="btn-secondary" data-close="modalKamar">Batal</button>
+              <button type="submit" class="btn-primary">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- MODAL FORM PENGHUNI -->
+      <div id="modalPenghuni" class="modal-backdrop hidden">
+        <div class="modal-sheet">
+          <div class="modal-head">
+            <h3 id="modalPenghuniTitle">Tambah Penghuni</h3>
+            <button type="button" class="close-btn" data-close="modalPenghuni">&times;</button>
+          </div>
+          <form id="formPenghuni">
+            <input type="hidden" id="penghuniId" />
+            <div class="form-group">
+              <label for="penghuniNama">Nama Lengkap</label>
+              <input id="penghuniNama" type="text" placeholder="Nama penghuni" required />
+            </div>
+            <div class="form-group">
+              <label for="penghuniNoHp">Nomor HP</label>
+              <input id="penghuniNoHp" type="text" placeholder="0812xxxxxxxx" required />
+            </div>
+            <div class="form-group">
+              <label for="penghuniAlamat">Alamat Asal</label>
+              <input id="penghuniAlamat" type="text" placeholder="Kota / Kabupaten" required />
+            </div>
+            <div class="form-group">
+              <label for="penghuniKamar">Kamar</label>
+              <select id="penghuniKamar" required></select>
+            </div>
+            <div class="form-row-2">
+              <div class="form-group">
+                <label for="penghuniMasuk">Tanggal Masuk</label>
+                <input id="penghuniMasuk" type="date" required />
+              </div>
+              <div class="form-group">
+                <label for="penghuniKeluar">Tanggal Keluar</label>
+                <input id="penghuniKeluar" type="date" />
+              </div>
+            </div>
+            <div id="penghuniStatusGroup" class="form-group hidden">
+              <label for="penghuniStatus">Status Penghuni</label>
+              <select id="penghuniStatus">
+                <option value="Aktif">Aktif</option>
+                <option value="Keluar">Keluar</option>
+              </select>
+            </div>
+            <div class="modal-actions">
+              <button type="button" class="btn-secondary" data-close="modalPenghuni">Batal</button>
+              <button type="submit" class="btn-primary">Simpan</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Home Indicator -->
+      <div class="home-indicator"></div>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
