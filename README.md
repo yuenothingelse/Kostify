@@ -1,7 +1,7 @@
 # Kostify
 System Management Boarding House
 
-mak## Menjalankan Proyek
+## Menjalankan Proyek
 
 Gunakan perintah berikut untuk menyiapkan database, mengunduh dependensi, serta mengompilasi dan menjalankan aplikasi **Kostify**:
 
@@ -12,3 +12,10 @@ Gunakan perintah berikut untuk menyiapkan database, mengunduh dependensi, serta 
 | `make compile` | Mengompilasi seluruh file `.java` dan menyalin `src/main/resources`. |
 | `make run` | Otomatis `compile` lalu menjalankan `com.kostify.MainApp`. |
 | `make clean` | Membersihkan folder `out/` sebelum *zip* atau *push* ke GitHub. |
+
+### Urutan Penggunaan Singkat
+
+```bash
+make db-up
+make deps
+make run
