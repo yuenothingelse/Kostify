@@ -177,7 +177,7 @@ public class MainApp extends Application {
         btnOpen.setOnAction(e -> {
             try {
                 Desktop.getDesktop().browse(new URI(this.appUrl));
-            } catch (Exception ignored) {
+                } catch (Exception ignored) {
             }
         });
 
