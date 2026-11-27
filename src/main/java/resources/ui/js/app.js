@@ -9,9 +9,11 @@ const state = {
 };
 
 function formatRupiah(num) {
+  
   const n = Number(num || 0);
   return "Rp " + n.toLocaleString("id-ID");
-}
+  
+  }
 
 function showToast(msg) {
   const el = document.getElementById("toast");
